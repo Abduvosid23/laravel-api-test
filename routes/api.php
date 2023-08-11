@@ -7,6 +7,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\WarehousesController;
 use App\Http\Controllers\IncomesController;
 
+Route::group(['middleware' => 'apikey'], function () {
 
 Route::get('/sales', [SalesController::class, 'index']);
 
@@ -16,6 +17,7 @@ Route::get('/incomes', [IncomesController::class, 'index']);
 
 Route::get('/warehouses', [WarehousesController::class, 'index']);
 
+});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
